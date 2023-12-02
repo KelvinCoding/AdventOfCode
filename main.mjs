@@ -12,8 +12,13 @@ const dirs = fs
 
 const args = process.argv.slice(2);
 
-if (args.length && args[0] === "--latest") {
+const shouldTime = args.includes("--time");
+
+if (args.length && args.includes("--latest")) {
   await runDir(dirs.at(-1));
+} else if (args.length && args.some((arg) => dirs.includes(arg))) {
+  const dir = args.find((arg) => dirs.includes(arg));
+  await runDir(dir);
 } else if (!args.length) {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -35,11 +40,23 @@ if (args.length && args[0] === "--latest") {
   );
 } else {
   console.error('Invalid arguments. Use "--latest" to run latest solution');
-  console.error('or specify a day to run. Example: "day01"');
+  console.error('or specify a day to run. Example: "./main.mjs day01"');
 }
 
 async function runDir(dir) {
+  const timeText = `Ran for`;
+  if (shouldTime) {
+    console.time(timeText);
+  }
   console.log(`Running solution for: ${dir}\n`);
   await import(`${__dirname}/${dir}/solve.mjs`);
-  process.exit(0);
+
+  if (shouldTime) {
+    console.log();
+    console.timeEnd(timeText);
+  }
+
+  console.log();
 }
+
+process.exit(0);
