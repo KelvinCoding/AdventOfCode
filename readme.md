@@ -1,7 +1,6 @@
 # Advent of Code 2023
 
-This is an attempt at not using any external tooling from NPM and solely use Node as the runner.
-This also means no typescript, but JSDocs are allowed.
+This is an attempt at not using any external tooling from NPM and solely use Node as the runner. This means no typescript, but JSDocs are allowed.
 
 ## Running
 
