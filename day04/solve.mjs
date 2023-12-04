@@ -17,7 +17,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11`;
  */
 function solve(input) {
   const games = input.split("\n");
-  const { part1, part2 } = games.reduce(
+  const { totalPoints, cardCopies } = games.reduce(
     (res, line) => {
       const [card, numbers] = line.split(": ");
       const cardNum = Number(card.split(" ").at(-1));
@@ -48,25 +48,26 @@ function solve(input) {
       const gameValue =
         myWinningCount === 0 ? 0 : Math.pow(2, myWinningCount - 1);
 
-      res.part1 = res.part1 + gameValue;
+      res.totalPoints = res.totalPoints + gameValue;
 
-      const numGamesToDupe = res.part2[cardNum - 1];
+      // How many copies to make of myself?
+      const numGamesToCopy = res.cardCopies[cardNum - 1];
 
       for (let winsToAdd = 0; winsToAdd < myWinningCount; winsToAdd += 1) {
-        res.part2[winsToAdd + cardNum] += numGamesToDupe;
+        res.cardCopies[winsToAdd + cardNum] += numGamesToCopy;
       }
 
       return res;
     },
     {
-      part1: 0,
-      part2: Array.from({ length: games.length }, () => 1),
+      totalPoints: 0,
+      cardCopies: Array.from({ length: games.length }, () => 1),
     }
   );
 
   console.log({
-    part1,
-    part2: part2.reduce((acc, wins) => acc + wins, 0),
+    part1: totalPoints,
+    part2: cardCopies.reduce((acc, wins) => acc + wins, 0),
   });
 }
 
