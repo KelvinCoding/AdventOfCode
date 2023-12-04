@@ -60,7 +60,7 @@ function solve(input) {
     },
     {
       part1: 0,
-      part2: [1, ...Array.from({ length: games.length - 1 }, () => 1)],
+      part2: Array.from({ length: games.length }, () => 1),
     }
   );
 
