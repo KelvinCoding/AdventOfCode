@@ -23,16 +23,17 @@ function solve(input) {
       const cardNum = Number(card.split(" ").at(-1));
       const [winningNumStr, myNumStr] = numbers.split(" | ");
 
-      const winningNums = new Set(
-        winningNumStr.split(" ").reduce((acc, numStr) => {
-          if (!numStr.trim()) {
-            return acc;
-          }
-          const num = Number(numStr.trim());
-          acc.add(num);
+      /**
+       * @type {Set<number>}
+       */
+      const winningNums = winningNumStr.split(" ").reduce((acc, numStr) => {
+        if (!numStr.trim()) {
           return acc;
-        }, new Set())
-      );
+        }
+        const num = Number(numStr.trim());
+        acc.add(num);
+        return acc;
+      }, new Set());
 
       const myWinningCount = myNumStr.split(" ").reduce((acc, numStr) => {
         if (!numStr.trim()) {
