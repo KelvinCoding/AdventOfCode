@@ -187,7 +187,7 @@ function mapRangeToDestinations(currentRanges, sourceToDestinationRanges) {
     toSplit = newRangesToSplit;
   }
 
-  return [...finalRanges, ...toSplit];
+  return finalRanges.concat(toSplit);
 }
 
 /**
