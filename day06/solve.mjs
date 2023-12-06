@@ -37,6 +37,12 @@ function solve(input) {
   });
 }
 
+/**
+ *
+ * @param {number} time
+ * @param {number} distance
+ * @returns {number}
+ */
 function getPossibleOptionCount(time, distance) {
   // Charging time is c distance is given by c * (t - c).
   // We want the distance to be greater than d so -c^2 + tc -d > 0.
