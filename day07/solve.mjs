@@ -1,6 +1,5 @@
 import { dirname } from "path";
 import fs from "fs";
-import { arrayBuffer } from "stream/consumers";
 
 const __dirname = dirname(new URL(import.meta.url).pathname);
 
