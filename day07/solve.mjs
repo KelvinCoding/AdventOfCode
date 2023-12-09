@@ -39,7 +39,7 @@ function getCardHexValue(card, isPart2 = false) {
   }
 }
 
-const HandValueMap = {
+const HandValueMap = /** @type {const} */ ({
   highCard: 0,
   onePair: 1,
   twoPair: 2,
@@ -47,7 +47,7 @@ const HandValueMap = {
   fullHouse: 4,
   fourOfAKind: 5,
   fiveOfAKind: 6,
-};
+});
 
 /**
  * @param {string} input
@@ -61,6 +61,9 @@ function solve(input) {
   });
 }
 
+/**
+ * @param {string} input
+ */
 function parseInput(input) {
   return input.split("\n").reduce(
     (acc, line) => {
@@ -76,7 +79,7 @@ function parseInput(input) {
           return acc;
         },
         {
-          cardCount: [],
+          cardCount: /** @type {Array<Record<string, number>>} */ ([]),
           p1CardHex: "",
           p2CardHex: "",
         }
@@ -98,14 +101,21 @@ function parseInput(input) {
       return acc;
     },
     {
-      part1Data: [],
-      part2Data: [],
+      part1Data:
+        /** @type {{cardCount: Record<string, number>, bid: number, handValue: number, cardsHex: number}[]} */ ([]),
+      part2Data:
+        /** @type {{cardCount: Record<string, number>, bid: number, handValue: number, cardsHex: number}[]} */ ([]),
     }
   );
 }
 
-function getTotalWinnings(cardsAndBids) {
-  const sortedCards = cardsAndBids.sort((a, b) => {
+/**
+ *
+ * @param {{cardCount: Record<string, number>, bid: number, handValue: number, cardsHex: number}[]} cardsData
+ * @returns
+ */
+function getTotalWinnings(cardsData) {
+  const sortedCards = cardsData.sort((a, b) => {
     return a.handValue - b.handValue || a.cardsHex - b.cardsHex;
   });
 
@@ -116,6 +126,12 @@ function getTotalWinnings(cardsAndBids) {
   return winnings;
 }
 
+/**
+ *
+ * @param {Record<string,number>} cardCount
+ * @param {boolean} [isPart2]
+ * @returns
+ */
 function getHandValue(cardCount, isPart2 = false) {
   const jokerCount = isPart2 ? cardCount["J"] || 0 : 0;
   const counts = Object.entries(cardCount).reduce((acc, [card, count]) => {
