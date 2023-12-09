@@ -16,8 +16,20 @@ const shouldTime = args.includes("--time");
 
 if (args.length && args.includes("--latest")) {
   await runDir(dirs.at(-1));
-} else if (args.length && args.some((arg) => dirs.includes(arg))) {
-  const dir = args.find((arg) => dirs.includes(arg));
+} else if (args.length && args.includes("--all")) {
+  if (shouldTime) {
+    console.time("Ran all days for");
+  }
+  await Promise.allSettled(dirs.map((dir) => runDir(dir)));
+
+  if (shouldTime) {
+    console.timeEnd("Ran all days for");
+  }
+} else if (
+  args.length &&
+  dirs.some((dir) => args.some((arg) => dir.startsWith(arg)))
+) {
+  const dir = dirs.find((dir) => args.some((arg) => dir.startsWith(arg)));
   await runDir(dir);
 } else if (!args.length) {
   const rl = readline.createInterface({
@@ -44,15 +56,14 @@ if (args.length && args.includes("--latest")) {
 }
 
 async function runDir(dir) {
-  const timeText = `Ran for`;
+  const timeText = `Ran ${dir} for`;
   if (shouldTime) {
     console.time(timeText);
   }
   console.log(`Running solution for: ${dir}\n`);
-  await import(`${__dirname}/${dir}/solve.mjs`);
+  await import(`${__dirname}/${dir}`);
 
   if (shouldTime) {
-    console.log();
     console.timeEnd(timeText);
   }
 

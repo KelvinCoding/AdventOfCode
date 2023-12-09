@@ -1,9 +1,7 @@
-import { dirname } from "path";
-import fs from "fs";
+import { getCurrentFilePath, getFileData } from "../../js-utils/getInput.mjs";
 
-const __dirname = dirname(new URL(import.meta.url).pathname);
-
-const input = fs.readFileSync(`${__dirname}/input.txt`, "utf-8").trim();
+const __dirname = getCurrentFilePath(import.meta.url);
+const input = getFileData(__dirname, "day04");
 
 const testInput = `Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
 Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19

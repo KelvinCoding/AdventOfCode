@@ -1,9 +1,7 @@
-import { dirname } from "path";
-import fs from "fs";
+import { getCurrentFilePath, getFileData } from "../../js-utils/getInput.mjs";
 
-const __dirname = dirname(new URL(import.meta.url).pathname);
-
-const input = fs.readFileSync(`${__dirname}/input.txt`, "utf-8").trim();
+const __dirname = getCurrentFilePath(import.meta.url);
+const input = getFileData(__dirname, "day02");
 
 const testInput = `Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
