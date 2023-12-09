@@ -9,6 +9,10 @@ const testInput = `0 3 6 9 12 15
 1 3 6 10 15 21
 10 13 16 21 30 45`.trim();
 
+/**
+ * @param {string} input
+ * @returns {number[][]}
+ */
 function parseInput(input) {
   const lineValues = input
     .split("\n")
@@ -17,6 +21,9 @@ function parseInput(input) {
   return lineValues;
 }
 
+/**
+ * @param {string} input
+ */
 function solve(input) {
   const lineSequences = parseInput(input).map((line) => getAllSequences(line));
 
