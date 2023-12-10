@@ -27,12 +27,12 @@ function solve(input) {
 
   console.log({
     part1: lineSequences.reduce(
-      (acc, line) => acc + line.reduce((acc, seq) => acc + seq.at(-1), 0),
+      (res, line) => res + line.reduce((acc, seq) => acc + seq.at(-1), 0),
       0
     ),
     part2: lineSequences.reduce(
-      (acc, line) =>
-        acc + line.toReversed().reduce((acc, seq) => seq.at(0) - acc, 0),
+      (res, line) =>
+        res + line.toReversed().reduce((acc, seq) => seq.at(0) - acc, 0),
       0
     ),
   });
@@ -62,5 +62,7 @@ function getAllSequences(line) {
   return allSequences;
 }
 
+console.group("Day 09");
 solve(testInput); // { part1: 114, part2: 2 }
 solve(input); // { part1: 2175229206, part2: 942 }
+console.groupEnd("Day 09");

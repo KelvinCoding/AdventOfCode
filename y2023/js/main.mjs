@@ -60,14 +60,11 @@ async function runDir(dir) {
   if (shouldTime) {
     console.time(timeText);
   }
-  console.log(`Running solution for: ${dir}\n`);
   await import(`${__dirname}/${dir}`);
 
   if (shouldTime) {
     console.timeEnd(timeText);
   }
-
-  console.log();
 }
 
 process.exit(0);

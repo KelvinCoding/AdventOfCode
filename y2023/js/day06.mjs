@@ -56,5 +56,7 @@ function getPossibleOptionCount(time, distance) {
   return result;
 }
 
+console.group("Day 06");
 solve(testInput); // { part1: 288, part2: 71503 }
 solve(input); // { part1: 303600, part2: 23654842 }
+console.groupEnd("Day 06");

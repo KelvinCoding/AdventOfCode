@@ -186,5 +186,7 @@ function getHandValue(cardCount, isPart2 = false) {
   return HandValueMap.highCard;
 }
 
+console.group("Day 07");
 solve(testInput); // { part1: 6440, part2: 5905 }
 solve(input); // { part1: 248113761, part2: 246285222 }
+console.groupEnd("Day 07");

@@ -70,5 +70,7 @@ function solve(input) {
   });
 }
 
+console.group("Day 04");
 solve(testInput); // { part1: 13, part2: 30 }
 solve(input); // { part1: 22193, part2: 5625994 }
+console.groupEnd("Day 04");

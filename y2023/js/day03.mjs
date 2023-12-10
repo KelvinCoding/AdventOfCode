@@ -67,5 +67,7 @@ function solve(input) {
   console.log(result);
 }
 
+console.group("Day 03");
 solve(testInput); // { part1: 4361, part2: 467835 }
 solve(input); // { part1: 553825, part2: 93994191 }
+console.groupEnd("Day 03");

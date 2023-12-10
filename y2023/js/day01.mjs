@@ -69,5 +69,7 @@ function parseLineValue(line) {
   );
 }
 
+console.group("Day 01");
 solve(testInput); // { part1: NaN, part2: 281 }
 solve(input); // { part1: 54632, part2: 54019 }
+console.groupEnd("Day 01");

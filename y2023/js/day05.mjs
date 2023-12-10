@@ -225,5 +225,7 @@ function parseInput(input) {
   };
 }
 
+console.group("Day 05");
 solve(testInput); // { part1: 35, part2: 46 }
 solve(input); // { part1: 331445006, part2: 6472060 }
+console.groupEnd("Day 05");

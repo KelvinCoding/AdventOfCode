@@ -120,5 +120,7 @@ function lcmVariadic(...args) {
   return args.reduce((acc, val) => lcm(acc, val), 1);
 }
 
+console.group("Day 08");
 solve(testInput); // { part1: 2, part2: 1 }
 solve(input); // { part1: 12083, part2: 13385272668829 }
+console.groupEnd("Day 08");

@@ -87,5 +87,7 @@ function solveGame(game) {
   );
 }
 
+console.group("Day 02");
 solve(testInput); // { part1: 8, part2: 2286 }
 solve(input); // { part1: 3059, part2: 65371 }
+console.groupEnd("Day 02");
